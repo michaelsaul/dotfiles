@@ -12,7 +12,11 @@ brew 'youtube-dl'
 brew 'powerlevel10k'
 brew 'gnupg'
 brew 'neofetch'
+brew 'watch'
 brew 'zsh'
+
+#Dev Tools
+cask 'git-credential-manager-core'
 
 # Applications
 cask 'microsoft-edge'
