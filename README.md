@@ -2,7 +2,7 @@
 
 This is my repository for all of my macOS configuration files.
 
-## How to complete my macOS Setup
+## How to Complete my macOS Setup
 
 ### Prerequisities
 
