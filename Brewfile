@@ -23,6 +23,7 @@ cask 'microsoft-edge'
 cask 'microsoft-teams'
 cask 'powershell'
 cask 'visual-studio-code'
+cask 'aerial'
 
 # Mac App Store Apps
 mas '1Blocker', id: 1365531024
