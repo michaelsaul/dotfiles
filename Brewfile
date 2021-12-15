@@ -1,7 +1,7 @@
 # Azure tooling
 
 brew 'azure-cli'
-brew 'azure-functions-core-tools@3'
+brew 'azure-functions-core-tools'
 cask 'microsoft-azure-storage-explorer'
 
 # Utilities
@@ -9,14 +9,14 @@ brew 'youtube-dl'
 
 
 # System tools
-brew 'powerlevel10k'
+brew 'romkatv/powerlevel10k/powerlevel10k'
 brew 'gnupg'
 brew 'neofetch'
 brew 'watch'
 brew 'zsh'
 
 #Dev Tools
-cask 'git-credential-manager-core'
+brew 'git-credential-manager'
 
 # Applications
 cask 'microsoft-edge'
@@ -24,6 +24,7 @@ cask 'microsoft-teams'
 cask 'powershell'
 cask 'visual-studio-code'
 cask 'aerial'
+cask 'lastpass'
 
 # Mac App Store Apps
 mas '1Blocker', id: 1365531024

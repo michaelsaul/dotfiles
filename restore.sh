@@ -18,6 +18,7 @@ fi
 
 brew update
 brew tap homebrew/bundle
+brew tap azure/functions
 brew bundle
 
 # Remove .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
