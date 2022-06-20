@@ -35,6 +35,16 @@ for f in '/usr/local/etc/bash_completion.d/'*; do
   source "$f"
 done;
 
+#dotnet autocomplete
+_dotnet_zsh_complete()
+{
+  local completions=("$(dotnet complete "$words")")
+
+  reply=( "${(ps:\n:)completions}" )
+}
+
+compctl -K _dotnet_zsh_complete dotnet
+
 #Functions
 
 #Open man pages in new window
