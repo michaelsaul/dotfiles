@@ -19,6 +19,7 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
   autoload -Uz compinit
   compinit
@@ -49,25 +50,6 @@ compctl -K _dotnet_zsh_complete dotnet
 
 #Open man pages in new window
 function xmanpage() { open x-man-page://$@ ; }
-
-#Print Time Machine Remaining Percent and Hours
-tmtime () {
-  if [[ `tmutil status | awk -F'= ' '/Running/ {print substr($2,1,length($2)-1)}'` -eq 1 ]]
-  then
-    minutes=`tmutil status | awk -F'=' '/TimeRemaining/ {print substr($2, 1, length($2)-1)/60}'`
-    percent=`tmutil status | awk -F'"' '/_raw_Percent/ {print $4*100}'`
-    
-    if [[ minutes -lt 60 ]]
-    then
-      echo Time Machine Status: $percent"% complete. "$minutes" minutes remaining."
-    else
-      hours=$(( $minutes / 60 ))
-      echo Time Machine Status: $percent"% complete. "$hours" hours remaining."
-    fi
-  else
-    echo "Time Machine isn't running"
-  fi
-}
 
 startjumpbox () {
   az account set --subscription 658dc4bc-feee-4c24-b7d2-130ba139a4ed

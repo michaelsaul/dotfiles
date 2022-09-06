@@ -6,7 +6,11 @@ cask 'microsoft-azure-storage-explorer'
 
 # Utilities
 brew 'youtube-dl'
+brew 'zsh-completions'
 
+# Analytics Tools
+brew python
+brew anaconda
 
 # System tools
 brew 'romkatv/powerlevel10k/powerlevel10k'
