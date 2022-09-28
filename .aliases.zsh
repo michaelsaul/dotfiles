@@ -1,6 +1,9 @@
 #Automate kerberos login for work
 alias klogin='kdestroy --all;kinit --keychain misaul@NORTHAMERICA.CORP.MICROSOFT.COM'
 
+#Check for brew updates and list outdated
+alias buo='brew update && brew outdated'
+
 #Start Local Time Machine Backup
 tmlb() {
     destination=`tmutil destinationinfo | egrep 'Local' -A 2 | tail -n 1 | awk -F: '{ gsub(/ /,"");print $2}'`
