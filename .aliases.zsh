@@ -7,8 +7,13 @@ alias buo='brew update && brew outdated'
 #Start Local Time Machine Backup
 tmlb() {
     destination=`tmutil destinationinfo | egrep 'Local' -A 2 | tail -n 1 | awk -F: '{ gsub(/ /,"");print $2}'`
-    echo $destination
-    tmutil startbackup -d $destination
+    #echo $destination
+    if [ -z "$destination" ]
+    then
+      echo No destination found, quitting.
+    else
+      tmutil startbackup -d $destination
+    fi
 }
 
 #Print Time Machine Remaining Percent and Hours
