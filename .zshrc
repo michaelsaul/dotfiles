@@ -24,6 +24,12 @@ fi
 
 #Load tabcomplete
 autoload -Uz compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+
+#Terraform autocomplete
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+#Az cli autocomplete
+source /opt/homebrew/etc/bash_completion.d/az
 
 #Functions
 

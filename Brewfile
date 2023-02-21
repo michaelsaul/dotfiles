@@ -1,9 +1,7 @@
-# Utilities
-brew 'zsh-completions'
-
 # Analytics Tools
 brew 'python'
 cask 'anaconda'
+brew 'conda-zsh-completion'
 
 # System tools
 brew 'romkatv/powerlevel10k/powerlevel10k'
@@ -12,9 +10,16 @@ brew 'gnupg'
 brew 'watch'
 brew 'zsh'
 brew 'htop'
+brew 'zsh-completions'
 
 #Dev Tools
 brew 'git-credential-manager'
+brew 'gh'
+brew 'kubectl'
+brew 'terraform'
+brew 'azure-cli'
+brew 'awscli'
+brew 'helm'
 
 # Applications
 cask 'visual-studio-code'
