@@ -1,0 +1,140 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](color_orange)\
+$os\
+$username\
+[](bg:color_yellow fg:color_orange)\
+$directory\
+[](fg:color_yellow bg:color_aqua)\
+$git_branch\
+$git_status\
+[](fg:color_aqua bg:color_blue)\
+$kubernetes\
+$azure\
+[](fg:color_blue bg:color_bg1)\
+$time\
+[](fg:color_bg1 bg:color_red)\
+$status\
+[ ](fg:color_red)\
+$line_break$character"""
+
+palette = "gruvbox_dark"
+
+[palettes.gruvbox_dark]
+color_fg0 = '230'
+color_bg1 = '16'
+color_bg3 = '59'
+color_blue = '30'
+color_aqua = '71'
+color_green = '100'
+color_orange = '166'
+color_purple = '132'
+color_red = '160'
+color_yellow = '172'
+
+[os]
+disabled = false
+style = "bg:color_orange fg:color_fg0"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+
+[username]
+show_always = true
+style_user = "bg:color_orange fg:color_fg0"
+style_root = "bg:color_orange fg:color_fg0"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:color_fg0 bg:color_yellow"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:color_aqua"
+format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+
+[git_status]
+style = "bg:color_aqua"
+format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
+
+[kubernetes]
+format = '[[ $symbol $context \($namespace\) ](fg:color_fg0 bg:color_blue)]($style)'
+disabled = false
+symbol = '󰠳'
+style = 'bg:color_blue'
+
+[azure]
+disabled = false
+format = '[[ $symbol $subscription ](fg:color_fg0 bg:color_blue)]($style)'
+symbol = '󰠅'
+style = 'bg:color_blue'
+[azure.subscription_aliases]
+instabase-cloudarch = 'cloudarch'
+
+[time]
+disabled = true
+time_format = "%R"
+style = "bg:color_bg1"
+format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[](bold fg:color_green)'
+error_symbol = '[](bold fg:color_red)'
+vimcmd_symbol = '[](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
+vimcmd_replace_symbol = '[](bold fg:color_purple)'
+vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+
+[status]
+format = '[\[$symbol\]($style)]($style)'
+style = 'fg:color_fg0 bg:color_red'
+symbol = '✘'
+success_symbol = '✓'
+not_executable_symbol = '🚫'
+not_found_symbol = '🔍'
+sigint_symbol = '🧵'
+signal_symbol = '⚡'
+map_symbol = true
+disabled = false
+
+[cmd_duration]
+format = '[\[$duration\]($style)]($style)'
+style = 'fg:color_fg0 bg:color_red'
+min_time = 0
+show_milliseconds = false
+disabled = false

@@ -1,3 +1,11 @@
+# Source Powerlevel10k
+#source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# Ruby path
+export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/lib/ruby/gems/3.3.0/bin:$PATH"
+export PATH="$HOME/.gem/ruby/3.3.0/bin:$PATH"
+
 # Path to your dotfiles.
 export DOTFILES=$HOME/.dotfiles
 
@@ -7,38 +15,40 @@ source $HOME/.aliases.zsh
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
-#Source Powerlevel10k
-source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-
+# Load tabcomplete
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
+  
+  autoload -U +X bashcompinit && bashcompinit
+  autoload -Uz compinit && compinit
 fi
 
-#Load tabcomplete
-autoload -Uz compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
+# Terraform autocomplete
+complete -o nospace -C $(brew --prefix)/bin/terraform terraform
+# Az cli autocomplete
+source $(brew --prefix)/etc/bash_completion.d/az
 
-#Terraform autocomplete
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
-#Az cli autocomplete
-source /opt/homebrew/etc/bash_completion.d/az
+# Docker Architecture
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
-#Functions
+# Functions
 
-#Open man pages in new window
+# Open man pages in new window
 function xmanpage() { open x-man-page://$@ ; }
 
+# Highlight less
+export LESSOPEN="| ${HOMEBREW_PREFIX}/bin/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
+
+alias k='kubectl'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -54,3 +64,9 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Disable conda prompt modification
+conda config --set changeps1 false
+
+# Initialize starship (must be at the end of the file)
+eval "$(starship init zsh)"
